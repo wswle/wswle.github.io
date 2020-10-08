@@ -27,13 +27,13 @@
 <meta property="og:description" content="正常缓存流程流程图用户访问某宝，然后某宝去访问redis如果redis有这个数据就返回回去显示出来，如果没有它就会去请求mysql如果mysql查到数据后就会把查到的数据同步到redis中，同时把数据返回给某宝。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-10-07T09:03:55.587Z">
+<meta property="article:modified_time" content="2020-10-07T17:01:42.739Z">
 <meta property="article:author" content="Devil Fruit">
 <meta property="article:tag" content="redis">
 <meta name="twitter:card" content="summary">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/wswle/wswle.github.io@master/lib/mdui_043tiny/css/mdui.css,gh/wswle/wswle.github.io@master/lib/iconfont/iconfont.css?v=233" crossorigin>
   
-  <link rel="stylesheet" href="/css/style.css?v=1602061591721">
+  <link rel="stylesheet" href="/css/style.css?v=1602119341071">
 <meta name="generator" content="Hexo 5.1.1"></head>
 
 <body class="mdui-drawer-body-left">
@@ -214,30 +214,36 @@
     <h2 id="正常缓存流程"><a href="#正常缓存流程" class="headerlink" title="正常缓存流程"></a>正常缓存流程</h2><h4 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a><a target="_blank" rel="noopener" href="https://i.loli.net/2020/10/07/hpvCGxiVBcAuWEk.jpg">流程图</a></h4><p>用户访问某宝，然后某宝去访问redis如果redis有这个数据就返回回去显示出来，如果没有它就会去请求mysql如果mysql查到数据后就会把查到的数据同步到redis中，同时把数据返回给某宝。</p>
 <a id="more"></a>
 
-<h2 id="会存在的问题"><a href="#会存在的问题" class="headerlink" title="会存在的问题"></a>会存在的问题</h2><h3 id="缓存雪崩：大量的redis缓存在同一时间失效，导致大量请求打到mysql造成数据库响应不及时挂掉"><a href="#缓存雪崩：大量的redis缓存在同一时间失效，导致大量请求打到mysql造成数据库响应不及时挂掉" class="headerlink" title="缓存雪崩：大量的redis缓存在同一时间失效，导致大量请求打到mysql造成数据库响应不及时挂掉"></a>缓存雪崩：大量的redis缓存在同一时间失效，导致大量请求打到mysql造成数据库响应不及时挂掉</h3><h4 id="流程图-1"><a href="#流程图-1" class="headerlink" title="流程图"></a><a target="_blank" rel="noopener" href="https://i.loli.net/2020/10/07/Xk6srMHP5KZzOV2.jpg">流程图</a></h4><h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><ul>
+<h2 id="会存在的问题"><a href="#会存在的问题" class="headerlink" title="会存在的问题"></a>会存在的问题</h2><h3 id="缓存雪崩：大量的redis缓存在同一时间失效，导致大量请求打到mysql造成数据库响应不及时挂掉"><a href="#缓存雪崩：大量的redis缓存在同一时间失效，导致大量请求打到mysql造成数据库响应不及时挂掉" class="headerlink" title="缓存雪崩：大量的redis缓存在同一时间失效，导致大量请求打到mysql造成数据库响应不及时挂掉"></a>缓存雪崩：大量的redis缓存在同一时间失效，导致大量请求打到mysql造成数据库响应不及时挂掉</h3><h4 id="流程图-1"><a href="#流程图-1" class="headerlink" title="流程图"></a><a target="_blank" rel="noopener" href="https://i.loli.net/2020/10/07/Xk6srMHP5KZzOV2.jpg">流程图</a></h4><h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><blockquote>
+<ol>
 <li>设置缓存失效时间让它不要在同一时间失效，在设置缓存的时候随机初始化失效时间，这样的话所有的缓存就不会同一时间失效打所有请求打到数据库上</li>
 <li>还有这个redis一般是集群部署，我们把热点的key放到不同的节点上去，让这些热点的缓存平均的分布在这个不同的redis节点上</li>
 <li>还有就是最暴力的方法就是不设置这个缓存失效的时间让它永远不失效</li>
 <li>还有就是去跑这个定时任务，让他去定时的刷这个缓存，比如说我这个缓存设置了三个小时失效那么我在失效之前就把这个redis缓存给他重新跑进去然后在设置三小时不断的用这个定时任务去刷新这个缓存，这个缓存就不会失效了</li>
-</ul>
+</ol>
+</blockquote>
 <h3 id="缓存穿透：是指redis缓存和数据库都没有这样的数据，一般出现这样的情况都不是正常用户，是一些恶意用户。"><a href="#缓存穿透：是指redis缓存和数据库都没有这样的数据，一般出现这样的情况都不是正常用户，是一些恶意用户。" class="headerlink" title="缓存穿透：是指redis缓存和数据库都没有这样的数据，一般出现这样的情况都不是正常用户，是一些恶意用户。"></a>缓存穿透：是指redis缓存和数据库都没有这样的数据，一般出现这样的情况都不是正常用户，是一些恶意用户。</h3><h4 id="流程图-2"><a href="#流程图-2" class="headerlink" title="流程图"></a><a target="_blank" rel="noopener" href="https://i.loli.net/2020/10/07/JbfZho13dyKpLN2.jpg">流程图</a></h4><h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><details><br>
   比如我自己开发了一个网站，这个网站非常火爆，动了某些人的蛋糕，然后遭到疯狂攻击，他的攻击手段就是采用这个缓存穿透，大家都知道数据库主键从0开始递增是没有负数的，那么黑客就利用这点，他不断的利用这个id小于0的这个参数给我发请求。我把数据库里面，所有的数据都放到了redis缓存里面去但是他用id小于0的数来请求redis里面并没有这个id小于0的数据，这样的话redis就查不到这个结果,一旦redis查不到这个结果，就会去数据库中查找，就会造成这些请求不断打到数据库上，因为redis这层不能拦截这样的数据,这个redis直接被这种数据穿透了直接穿透到数据库里面。
 </details>
 
-<h4 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h4><ul>
+<h4 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h4><blockquote>
+<ol>
 <li>如果请求穿过redis直接到数据库，我数据库无论查出什么结果是空还是有值，都缓存到redis里面，这样他下次用同一个参数发起请求就不会穿透redis,但是他可能会换不同的参数。</li>
 <li>就会将他的ip拉黑，但是他也会换不同的ip</li>
 <li>就是将参数进行合法性校验，在判断这个参数不合法的时候，直接return掉</li>
 <li>使用布隆过滤器</li>
-</ul>
+</ol>
+</blockquote>
 <h3 id="缓存击穿-当大量的用户请求去访问某个热点的key，当这个热点的key突然失效把请求打到数据库上，这个过程就叫做缓存的击穿。"><a href="#缓存击穿-当大量的用户请求去访问某个热点的key，当这个热点的key突然失效把请求打到数据库上，这个过程就叫做缓存的击穿。" class="headerlink" title="缓存击穿: 当大量的用户请求去访问某个热点的key，当这个热点的key突然失效把请求打到数据库上，这个过程就叫做缓存的击穿。"></a>缓存击穿: 当大量的用户请求去访问某个热点的key，当这个热点的key突然失效把请求打到数据库上，这个过程就叫做缓存的击穿。</h3><h4 id="流程图-3"><a href="#流程图-3" class="headerlink" title="流程图"></a><a target="_blank" rel="noopener" href="https://i.loli.net/2020/10/07/JtMeSQIq4A9REow.jpg">流程图</a></h4><h4 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h4><details><br>
   比如拿双十一举例，这个马爸爸在双十一想搞一个噱头，他把自己穿了二十年的老布鞋拿出来拍卖，然后有非常多的人对这个鞋感兴趣，在九点的时候准时拍卖这个鞋，然后某个程序员呢，就把这个鞋的数据放到了redis缓存里，对应这redis一个缓存的key，拍卖的时候大家的热情非常高涨，一直拍卖了四小时还没有结束这个拍卖，但是这双鞋他对应的缓存key它的失效时间四个半小时，当大家拍卖到四个半小时的时候。这个鞋的缓存key突然失效了，导致这个大量的redis请求在这个redis里查询不到这个数据。这些请求就会直接打到数据库上面去造成了这个数据库响应不及时然后挂掉。这个时候马爸爸看到自己这个鞋没有拍卖出去，非常生气，然后就把这个程序员送到了非洲。
 </details>
 
-<h4 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h4><ul>
+<h4 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h4><blockquote>
+<ol>
 <li>让这个缓存永远不过期，但这个方案肯定不太好</li>
-<li>使用分布式锁，如果是单体应用就可以使用这个互斥锁。原理就是：首先大量的用户去访问这个redis是请求数据，如果有的话就返回给用户，如果redis里面的数据为空的话，他就会去请求数据库。我们就在请求数据库这步给他上上锁，那么这个时候只有一个线程能抢到这个锁，所以也就只有一个线程能操作这个数据库，那么这个时候对数据库的压力就非常小，当他查询到这个数据后呢，在把这个缓存写到redis里去，其他没有抢到锁的线程让他先睡几毫米，然后让他重新去redis里面去查询。因为我们有一个线程抢到了这个锁，去数据库里查到数据并把数据放到redis里面去，那么其他线程去访问redis的时候，这个redis里面就有数据的。可以用zookeeper实现，还可以redis实现</li>
-</ul>
+<li>使用分布式锁，如果是单体应用就可以使用互斥锁。<strong>原理就是</strong>：首先大量的用户去访问这个redis是请求数据，如果有的话就返回给用户，如果redis里面的数据为空的话，他就会去请求数据库。我们就在请求数据库这步给他上上锁，那么这个时候只有一个线程能抢到这个锁，所以也就只有一个线程能操作这个数据库，那么这个时候对数据库的压力就非常小，当他查询到这个数据后呢，在把这个缓存写到redis里去，其他没有抢到锁的线程让他先睡几毫米，然后让他重新去redis里面去查询。因为我们有一个线程抢到了这个锁，去数据库里查到数据并把数据放到redis里面去，那么其他线程去访问redis的时候，这个redis里面就有数据的。可以用zookeeper实现，还可以redis实现</li>
+</ol>
+</blockquote>
 
   </article>
 
@@ -294,7 +300,7 @@ var dsqjs = new DisqusJS({
     <script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
 
 
-<script src="/js/app.js?v=1602061591722"></script>
+<script src="/js/app.js?v=1602119341073"></script>
   
 
 
