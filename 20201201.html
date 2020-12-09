@@ -23,12 +23,12 @@
 <meta property="og:description" content="算法的概念算法是计算机处理信息的本质，因为计算机程序本质上是一个算法来告诉计算机确切的步骤来执行一个指定的任务。一般地，当算法在处理信息时，会从输入设备或数据的存储地址读取数据，把结果写入输出设备或某个存储地址供以后在调用。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-30T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-12-09T12:55:14.041Z">
+<meta property="article:modified_time" content="2020-12-09T12:59:47.144Z">
 <meta property="article:author" content="Devil Fruit">
 <meta name="twitter:card" content="summary">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/nexmoe/nexmoe.github.io@latest/lib/mdui_043tiny/css/mdui.css,gh/nexmoe/nexmoe.github.io@latest/lib/iconfont/iconfont.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233" crossorigin>
   
-  <link rel="stylesheet" href="/css/style.css?v=1607518557399">
+  <link rel="stylesheet" href="/css/style.css?v=1607518802168">
 <meta name="generator" content="Hexo 5.1.1"></head>
 
 <body class="mdui-drawer-body-left">
@@ -221,7 +221,7 @@
 <p>对于算法的时间效率，我们采用 “大O记法”来表示。</p>
 <p>*<em>“大O记法”：对于单调的整数函数f，如果存在一个整数g和实常熟c&gt;0，使得对于充分大的n总有f(n) &lt;= c</em>g(n) ，就说函数g是f的一个渐进函数（忽略常熟），记为 f(n) = O(g(n))。也就是说，在趋向无穷的极限意义下，函数 f 的增长速度收到函数 g 的约束，即函数 f 与函数 g 的特征相似。**</p>
 <p>  <strong>时间复杂度：假设存在函数 g ，使得算法 A 处理规模为 n 的问题，示例所用时间为 T(n) = O(g(n)) ，则称 O(g(n)) 为算法 A 的渐进时间复杂度，简称时间复杂度，记为 T(n)</strong></p>
-<h3 id="如何理解“大O记法”"><a href="#如何理解“大O记法”" class="headerlink" title="如何理解“大O记法”"></a>如何理解“大O记法”</h3><p>对于算法进行特别具体的细致分析虽然很好，但在时间中的实际价值有限。对于算法的时间性质和空间性质，最重要的是其数量级和趋势，这些是分析算法效率的主要部分。而计量算法基本操作数量的规模函数中那些常量因子可以忽略不记。例如，可以认为 3n<sup>2</sup> 和 100n<sup>2</sup> 属于同一量级，如果两个算法处理同样规模实例的代价分别为这两个函数，就认为他们的效率“差不多”， 都是 n<sup>2</sup>级。</p>
+<h3 id="如何理解“大O记法”"><a href="#如何理解“大O记法”" class="headerlink" title="如何理解“大O记法”"></a>如何理解“大O记法”</h3><p>对于算法进行特别具体的细致分析虽然很好，但在时间中的实际价值有限。对于算法的时间性质和空间性质，最重要的是其数量级和趋势，这些是分析算法效率的主要部分。而计量算法基本操作数量的规模函数中那些常量因子可以忽略不记。例如，可以认为 3n<sup>2</sup> 和 100n<sup>2</sup> 属于同一量级，如果两个算法处理同样规模实例的代价分别为这两个函数，就认为它们的效率“差不多”， 都是 n<sup>2</sup>级。</p>
 <h3 id="最坏时间复杂度"><a href="#最坏时间复杂度" class="headerlink" title="最坏时间复杂度"></a>最坏时间复杂度</h3><p>分析算法时，存在几种可能的考虑：</p>
 <ol>
 <li>算法完成工作最少需要多少基本操作，即 <strong>最优时间复杂度</strong></li>
@@ -233,7 +233,7 @@
 <li>顺序结构：时间复杂度按<strong>加法</strong>进行计算</li>
 <li>循环结构：时间复杂度按<strong>乘法</strong>进行计算</li>
 <li>分支结构：时间复杂度<strong>取最大值</strong></li>
-<li>判断一个算法的效率时，旺旺只需要关注操作数量的最高次项，其他次要项和常数项可以忽略</li>
+<li>判断一个算法的效率时，往往只需要关注操作数量的最高次项，其它次要项和常数项可以忽略</li>
 <li>在没有特殊说明时，我们所分析的算法的时间复杂度都是指<strong>最坏时间复杂度</strong></li>
 </ol>
 <h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><p>那么我们来分析一下前面所用到的两种算法的时间复杂度<br>1、第一次：</p>
@@ -307,7 +307,7 @@ var dsqjs = new DisqusJS({
 
 
 <script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
- <script src="/js/app.js?v=1607518557404"></script>
+ <script src="/js/app.js?v=1607518802170"></script>
 
   
 
