@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>算法 - 小王的博客</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <!-- Site Verification -->
+    <meta name="baidu-site-verification" content="code-G4VUytSKRR" />
+
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/wswle/wswle.github.io@master/images/favicon.ico" type="image/x-icon" />
+    <meta name="description" content="算法的概念算法是计算机处理信息的本质，因为计算机程序本质上是一个算法来告诉计算机确切的步骤来执行一个指定的任务。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法">
+<meta property="og:url" content="https://wswle.cn/20201201.html">
+<meta property="og:site_name" content="小王的博客">
+<meta property="og:description" content="算法的概念算法是计算机处理信息的本质，因为计算机程序本质上是一个算法来告诉计算机确切的步骤来执行一个指定的任务。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-13T03:34:51.479Z">
+<meta property="article:author" content="小王">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="/lib/jquery.fancybox.min.css?v=1649827468343">
+    
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1649827468343">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1649827468343">
+    <link rel="stylesheet" href="/css/style.css?v=1649827468343">
+     
+    
+        <link rel="stylesheet" href="/custom.css">
+    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/wswle/wswle.github.io@master/images/5c3aec85a4343.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="小王" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/wswle/wswle.github.io@master/images/avatar.jpg" alt="小王"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="小王">
+            <img src="https://cdn.jsdelivr.net/gh/wswle/wswle.github.io@master/images/avatar.jpg" alt="小王" alt="小王">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>7</div>
+        <div><span>标签</span>3</div>
+        <div><span>分类</span>5</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/HC.html" title="请我喝茶">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                请我喝茶
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:wswle.cn" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/327602853" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://www.youtube.com/channel/UCh_4BrZh_unetGM4bfCVz7A" target="_blank" mdui-tooltip="{content: 'YouTube'}" style="color: rgb(222, 69, 28);background-color: rgba(222, 69, 28, .15);">
+            <i class="nexmoefont icon-youtube"></i>
+        </a><a class="mdui-ripple" href="https://twitter.com/wswlecn" target="_blank" mdui-tooltip="{content: 'Twitter'}" style="color: rgb(28, 135, 235);background-color: rgba(28, 135, 235, .15);">
+            <i class="nexmoefont icon-twitter"></i>
+        </a><a class="mdui-ripple" href="https://www.zhihu.com/people/wswle.cn" target="_blank" mdui-tooltip="{content: '知乎'}" style="color: rgb(30,136,229);background-color: rgba(30,136,229,.1);">
+            <i class="nexmoefont icon-zhihu"></i>
+        </a><a class="mdui-ripple" href="https://github.com/wswle/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="mailto:wswle47@gmail.com" target="_blank" mdui-tooltip="{content: 'Mail'}" style="color: rgb(50, 10, 10);background-color: rgba(50, 10, 23, .1);">
+            <i class="nexmoefont icon-mail-fill"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/redis/" style="font-size: 20px;">redis</a> <a href="/tags/%E6%AD%A3%E5%88%99/" style="font-size: 10px;">正则</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+    </div>
+    
+  </div>
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/原理/">原理</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/干货/">干货</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/开发/">开发</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/笔记/">笔记</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随心/">随心</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2022 小王
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br> <a href="http://beian.miit.gov.cn" target="_blank">京ICP备2020037086号</a><img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a><script data-ad-client="ca-pub-2058306854838448" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="https://cdn.jsdelivr.net/gh/wswle/wswle.github.io@master/images/5c3aec85a4343.jpg" data-sizes="auto" alt="算法" class="lazyload">
+              <h1>算法</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>
+        2020年12月01日
+    </a>
+    <a><i class="nexmoefont icon-areachart"></i>
+        1.6k 字
+    </a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>
+        大概 6 分钟
+    </a>
+</div>
+
+      
+
+      <h2 id="算法的概念"><a href="#算法的概念" class="headerlink" title="算法的概念"></a>算法的概念</h2><p>算法是计算机处理信息的本质，因为计算机程序本质上是一个算法来告诉计算机确切的步骤来执行一个指定的任务。<span id="more"></span>一般地，当算法在处理信息时，会从输入设备或数据的存储地址读取数据，把结果写入输出设备或某个存储地址供以后在调用。</p>
+<p><strong>算法是独立存在的一种解决问题的方法和思想。</strong></p>
+<p>对于算法而言，实现的语言并不重要，重要的是思想。<br>算法可以有不同的语言描述实现版本（如C描述、C++描述、Python描述等），而我是使用Python语言进行描述实现。</p>
+<h2 id="算法的五大特性"><a href="#算法的五大特性" class="headerlink" title="算法的五大特性"></a>算法的五大特性</h2><ol>
+<li><strong>输入：</strong> 算法具有0个或多个输入</li>
+<li><strong>输出：</strong> 算法至少有1个或多个输出</li>
+<li><strong>有穷性：</strong> 算法在有限的步骤之后会自动结束而不会无限循环，并且每一个步骤可以在可以接受的时间内完成</li>
+<li><strong>确定性：</strong> 算法中的每一步都有确定的含义，不会出现二义性</li>
+<li><strong>可行性：</strong> 算法的每一步都是可行的，也就是说每一步都能够执行有限的次数完成</li>
+</ol>
+<h2 id="算法效率衡量"><a href="#算法效率衡量" class="headerlink" title="算法效率衡量"></a>算法效率衡量</h2><h3 id="执行时间反应算法效率"><a href="#执行时间反应算法效率" class="headerlink" title="执行时间反应算法效率"></a>执行时间反应算法效率</h3><p>对于同一个问题，我们给出了两种解决算法，在两种算法的实现中，我对于程序的执行的时间进行了测算，发现两段程序执行的时间相差悬殊（1102秒相比于7秒），由此我们可以得出结论：<strong>实现算法程序的执行时间可以反应出算法的效率，即算法的优劣。</strong></p>
+<h3 id="单靠时间值绝对可信吗？"><a href="#单靠时间值绝对可信吗？" class="headerlink" title="单靠时间值绝对可信吗？"></a>单靠时间值绝对可信吗？</h3><p>假设我们将第二种尝试的算法程序运行在一天配置古老、性能低下的计算机中，情况会如何？很可能运行的时间并不会比我们的电脑中运行算法一的 1102 秒快多少。</p>
+<p><strong>单纯依靠运行的时间来比较算法的优劣并不一定是客观准确的。</strong></p>
+<p>程序的运行离不开计算机环境（包括硬件和操作系统），这些客观原因会影响程序运行的速度病反应程序的执行时间上。那么如何才能客观评判一个算法的优劣呢？</p>
+<h3 id="时间复杂度与“大O记法”"><a href="#时间复杂度与“大O记法”" class="headerlink" title="时间复杂度与“大O记法”"></a>时间复杂度与“大O记法”</h3><p>我们假定计算机执行算法每一个基本操作的时间是固定的一个时间单位，那么有多少个基本操作就代表会话费多少时间单位。算法对于不同的机器环境而言，确切的单位时间是不同的，但对于算法进行多少个基本操作（即话费多少单位时间）在规模数量级上确实相同的，由此可以忽略机器环境的影响而客观的反应算法的时间效率。</p>
+<p><strong>对于算法的时间效率，我们采用 “大O记法”来表示。</strong></p>
+<p><strong>“大O记法”：对于单调的整数函数f，如果存在一个整数g和实常熟c&gt;0，使得对于充分大的n总有f(n) &lt;&#x3D; c*g(n) ，就说函数g是f的一个渐进函数（忽略常熟），记为 f(n) &#x3D; O(g(n))。也就是说，在趋向无穷的极限意义下，函数 f 的增长速度收到函数 g 的约束，即函数 f 与函数 g 的特征相似。</strong></p>
+<p><strong>时间复杂度：假设存在函数 g ，使得算法 A 处理规模为 n 的问题，示例所用时间为 T(n) &#x3D; O(g(n)) ，则称 O(g(n)) 为算法 A 的渐进时间复杂度，简称时间复杂度，记为 T(n)</strong></p>
+<h3 id="如何理解“大O记法”"><a href="#如何理解“大O记法”" class="headerlink" title="如何理解“大O记法”"></a>如何理解“大O记法”</h3><p>对于算法进行特别具体的细致分析虽然很好，但在时间中的实际价值有限。对于算法的时间性质和空间性质，最重要的是其数量级和趋势，这些是分析算法效率的主要部分。而计量算法基本操作数量的规模函数中那些常量因子可以忽略不记。例如，可以认为 3n<sup>2</sup> 和 100n<sup>2</sup> 属于同一量级，如果两个算法处理同样规模实例的代价分别为这两个函数，就认为它们的效率“差不多”， 都是 n<sup>2</sup>级。</p>
+<h3 id="常见的时间复杂度"><a href="#常见的时间复杂度" class="headerlink" title="常见的时间复杂度"></a>常见的时间复杂度</h3><p>
+<table>
+<thead>
+<tr><th>例子</th><th>时间复杂度</th><th>术语</th></tr>
+</thead>
+<tbody>
+<tr><td>5</td><td>O(1)</td><td>常数阶</td></tr>
+<tr><td>3n+4</td><td>O(n)</td><td>线性阶</td></tr>
+<tr><td>3n^2+4n+5</td><td>O(n^2)</td><td>平方阶</td></tr>
+<tr><td>3log(2)n+4</td><td>O(logn)</td><td>对数阶</td></tr>
+<tr><td>2n+3nlog(2)n+14</td><td>O(nlogn)</td><td>nlogn阶</td></tr>
+<tr><td>n^3+2n^2+4n+6</td><td>O(n^3)</td><td>立方阶</td></tr>
+<tr><td>2^n</td><td>O(2^n)</td><td>指数阶</td></tr>
+</tbody>
+</table>
+</p>
+
+<p><strong>时间复杂度对比： O(1) &lt; O(logn) &lt; O(n) &lt; O(nlogn) &lt; O(n^2) &lt; O(n^3) &lt; O(2^n) &lt; O(n!) &lt; O(n^n)</strong></p>
+<h3 id="最坏时间复杂度"><a href="#最坏时间复杂度" class="headerlink" title="最坏时间复杂度"></a>最坏时间复杂度</h3><p>分析算法时，存在几种可能的考虑：</p>
+<ol>
+<li>算法完成工作最少需要多少基本操作，即 <strong>最优时间复杂度</strong></li>
+<li>算法完成工作最多需要多少基本操作，即 <strong>最坏时间复杂度</strong></li>
+<li>算法完成工作平均需要多少基本操作，即 <strong>平均时间复杂度</strong></li>
+</ol>
+<h3 id="时间复杂度的几条基本计算规则"><a href="#时间复杂度的几条基本计算规则" class="headerlink" title="时间复杂度的几条基本计算规则"></a>时间复杂度的几条基本计算规则</h3><ol>
+<li>基本操作：即只有常数项，认为其时间复杂度为 <strong>O(1)</strong></li>
+<li>顺序结构：时间复杂度按<strong>加法</strong>进行计算</li>
+<li>循环结构：时间复杂度按<strong>乘法</strong>进行计算</li>
+<li>分支结构：时间复杂度<strong>取最大值</strong></li>
+<li>判断一个算法的效率时，往往只需要关注操作数量的最高次项，其它次要项和常数项可以忽略</li>
+<li>在没有特殊说明时，我们所分析的算法的时间复杂度都是指<strong>最坏时间复杂度</strong></li>
+</ol>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><p>那么我们来分析一下前面所用到的两种算法的时间复杂度<br>1、第一次：</p>
+<pre><code class="hljs Python"><span class="hljs-keyword">for</span> a <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1001</span>):
+    <span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10001</span>):
+        <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1001</span>):
+            <span class="hljs-keyword">if</span> a + b + c == <span class="hljs-number">1000</span> <span class="hljs-keyword">and</span> a**<span class="hljs-number">2</span> + b**<span class="hljs-number">2</span> == c**<span class="hljs-number">2</span>:
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;a, b, c:%d, %d, %d&#x27;</span>% (a, b, c))</code></pre>
+<p>时间复杂度：      T(n) &#x3D; O(n*n*n) &#x3D; O(n<sup>3</sup>)</p>
+<p>2、第二次：</p>
+<pre><code class="hljs Python"><span class="hljs-keyword">for</span> a <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1001</span>):
+    <span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10001</span>):
+        c = <span class="hljs-number">1000</span> - a - b 
+        <span class="hljs-keyword">if</span> a**<span class="hljs-number">2</span> + b**<span class="hljs-number">2</span> == c**<span class="hljs-number">2</span>:
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;a, b, c:%d, %d, %d&#x27;</span>% (a, b, c))</code></pre>
+<p>时间复杂度：     T(n) &#x3D; O(n*n*(1+1)) &#x3D; O(n*n) &#x3D; O(n<sup>2</sup>)</p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>小王<br>
+        <strong>本文链接：</strong><a href="https://wswle.cn/20201201.html" title="https:&#x2F;&#x2F;wswle.cn&#x2F;20201201.html" target="_blank" rel="noopener">https:&#x2F;&#x2F;wswle.cn&#x2F;20201201.html</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <!-- Unpkg -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.min.css">
+<script src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.min.js"></script>
+<div id="disqus_thread"></div>
+<script>
+var dsqjs = new DisqusJS({
+    shortname: 'wswle',
+    siteName: '小王的博客',
+    identifier: 'https://wswle.cn/20201201.html',
+    url: 'https://wswle.cn/20201201.html',
+    title: '算法',
+    api: 'https://disqus.skk.moe/disqus/',
+    apikey: 'J7BgJKcThxWlbVNoDHx8RyWueY2EQxkz8CVCz06mW2yfGs23EIYiD5YHyk6YszCU',
+    admin: 'wswle',
+    adminLabel: '管理员'
+});
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">算法的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E7%9A%84%E4%BA%94%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="toc-number">2.</span> <span class="toc-text">算法的五大特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%95%88%E7%8E%87%E8%A1%A1%E9%87%8F"><span class="toc-number">3.</span> <span class="toc-text">算法效率衡量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E6%97%B6%E9%97%B4%E5%8F%8D%E5%BA%94%E7%AE%97%E6%B3%95%E6%95%88%E7%8E%87"><span class="toc-number">3.1.</span> <span class="toc-text">执行时间反应算法效率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E9%9D%A0%E6%97%B6%E9%97%B4%E5%80%BC%E7%BB%9D%E5%AF%B9%E5%8F%AF%E4%BF%A1%E5%90%97%EF%BC%9F"><span class="toc-number">3.2.</span> <span class="toc-text">单靠时间值绝对可信吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E2%80%9C%E5%A4%A7O%E8%AE%B0%E6%B3%95%E2%80%9D"><span class="toc-number">3.3.</span> <span class="toc-text">时间复杂度与“大O记法”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%E2%80%9C%E5%A4%A7O%E8%AE%B0%E6%B3%95%E2%80%9D"><span class="toc-number">3.4.</span> <span class="toc-text">如何理解“大O记法”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">3.5.</span> <span class="toc-text">常见的时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%9D%8F%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">3.6.</span> <span class="toc-text">最坏时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%9A%84%E5%87%A0%E6%9D%A1%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E8%A7%84%E5%88%99"><span class="toc-number">3.7.</span> <span class="toc-text">时间复杂度的几条基本计算规则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">算法分析</span></a></li></ol>
+                                  </div>
+                              </button>
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1649827468346"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+    <!-- CNZZ Analytics -->
+<div hidden>
+    <script src="//s95.cnzz.com/z_stat.php?id=1279365117#&lt;ID&gt;&web_id=1279365117#&lt;ID&gt;" language="JavaScript"></script>
+</div>
+
+
+
+
+</body>
+
+</html>
